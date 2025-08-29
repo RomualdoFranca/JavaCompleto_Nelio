@@ -5,7 +5,7 @@ public class Product {
 	private String name;
 	private Double price;
 	
-	public Product() {
+	public Product() {//construtor padrão
 		
 	}
 
