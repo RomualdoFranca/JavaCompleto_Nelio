@@ -1,5 +1,6 @@
 package secao13.polimorfismo.myideias.exercicios.application;
 
+import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -16,25 +17,64 @@ public class ApplicationProduct {
 		Scanner sc = new Scanner(System.in);
 		Locale.setDefault(Locale.US);
 		
-		System.out.println("Manufactore date (DD/MM/YYYY):");
-		String data = sc.nextLine();
+		System.out.print("Enter number of products:");
+		int n = sc.nextInt();
+		sc.nextLine();
 		
-		//padrao de formatacao da data (dd/MM/yyyy
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		//converte string para LocalDate
-		LocalDate localDate = LocalDate.parse(data, formatter);
-		
-		
-		Product prod01 = new Product("Notebook", 1100.00);
-		System.out.println(prod01.priceTag());
-		
-		ImportedProduct prodImp01 = new ImportedProduct("Tablet", 280.00, 20.00);
-		System.out.println(prodImp01.priceTag());
-		
-		UsedProduct prod = new UsedProduct("Iphone", 400.00, localDate);
-		System.out.println(prod.priceTag());
-		
-		
+		//loop para inserção dos dados e tipos de produto
+		for (int i = 1; i <= n; i++) {
+			System.out.println("Product #" + i + " data:");
+			System.out.println("Common, used or imported (c/u/i)?");
+			char typeProduct = sc.next().charAt(0);
+			//produtos comuns
+			if(typeProduct == 'c') {
+				System.out.print("Name:");
+				String name = sc.nextLine();
+				sc.nextLine();
+				System.out.print("Price:");
+				double price = sc.nextDouble();
+				sc.nextLine();
+				//instancia objeto
+				Product product = new Product(name, price);
+				System.out.println(product.getName());
+//				System.out.println(product.priceTag());
+				
+				//produtos usados
+			}else if(typeProduct == 'u') {
+				System.out.print("Name:");
+				String name = sc.nextLine();
+				sc.nextLine();
+				System.out.print("Price:");
+				double price = sc.nextDouble();
+				sc.nextLine();
+				
+				System.out.println("Manufacture date (DD/MM/YYYY): ");
+				String date = sc.nextLine();
+				
+				//padrao de formatacao da data
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				//converte string num tipo date
+				LocalDate localDate = LocalDate.parse(date, formatter);
+				
+				//instancia objeto
+				Product product = new UsedProduct(name, price, localDate);
+				
+				//produtos importados
+			}else {
+				System.out.print("Name:");
+				String name = sc.nextLine();
+				sc.nextLine();
+				System.out.print("Price:");
+				double price = sc.nextDouble();
+				sc.nextLine();
+				System.out.print("Custom fee:");
+				double customFee = sc.nextDouble();
+				
+				//instancia objeto
+				Product product = new ImportedProduct(name, price, customFee);
+				System.out.println(product.priceTag());
+			}
+		}
 		
 		
 		sc.close();
