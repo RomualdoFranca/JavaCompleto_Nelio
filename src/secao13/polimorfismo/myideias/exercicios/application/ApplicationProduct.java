@@ -3,6 +3,7 @@ package secao13.polimorfismo.myideias.exercicios.application;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -17,6 +18,9 @@ public class ApplicationProduct {
 		Scanner sc = new Scanner(System.in);
 		Locale.setDefault(Locale.US);
 		
+		//arrays para armazenar os objetos
+		ArrayList<Product> listProduct = new ArrayList<Product>();
+		
 		System.out.print("Enter number of products:");
 		int n = sc.nextInt();
 		sc.nextLine();
@@ -26,24 +30,23 @@ public class ApplicationProduct {
 			System.out.println("Product #" + i + " data:");
 			System.out.println("Common, used or imported (c/u/i)?");
 			char typeProduct = sc.next().charAt(0);
+			sc.nextLine();
+			
 			//produtos comuns
 			if(typeProduct == 'c') {
 				System.out.print("Name:");
 				String name = sc.nextLine();
-				sc.nextLine();
+//				sc.nextLine();
 				System.out.print("Price:");
 				double price = sc.nextDouble();
 				sc.nextLine();
-				//instancia objeto
-				Product product = new Product(name, price);
-				System.out.println(product.getName());
-//				System.out.println(product.priceTag());
+				//instancia objeto e adiciona a lista
+				listProduct.add(new Product(name, price));
 				
 				//produtos usados
 			}else if(typeProduct == 'u') {
 				System.out.print("Name:");
 				String name = sc.nextLine();
-				sc.nextLine();
 				System.out.print("Price:");
 				double price = sc.nextDouble();
 				sc.nextLine();
@@ -56,24 +59,28 @@ public class ApplicationProduct {
 				//converte string num tipo date
 				LocalDate localDate = LocalDate.parse(date, formatter);
 				
-				//instancia objeto
-				Product product = new UsedProduct(name, price, localDate);
+				//instancia objeto e adiciona na lista
+				listProduct.add(new UsedProduct(name, price, localDate)) ;
 				
 				//produtos importados
 			}else {
 				System.out.print("Name:");
 				String name = sc.nextLine();
-				sc.nextLine();
 				System.out.print("Price:");
 				double price = sc.nextDouble();
 				sc.nextLine();
 				System.out.print("Custom fee:");
 				double customFee = sc.nextDouble();
+				sc.nextLine();
 				
-				//instancia objeto
-				Product product = new ImportedProduct(name, price, customFee);
-				System.out.println(product.priceTag());
+				//instancia objeto e adiciona na lista
+				listProduct.add(new ImportedProduct(name, price, customFee));
 			}
+		}
+		
+		//imprime as etiquetas dos produtos
+		for (Product product : listProduct) {
+			System.out.println(product.priceTag());
 		}
 		
 		

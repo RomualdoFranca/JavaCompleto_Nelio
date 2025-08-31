@@ -23,9 +23,10 @@ public class Product {
 	}
 	
 	public String priceTag() {
-		return String.format("%s $ %.2f", getName(), getPrice());
-//		StringBuilder sb = new StringBuilder();
-//		sb.append(getName() + " $ " + String.format("%.2f", getPrice()));
+		StringBuilder sb = new StringBuilder();
+		sb.append("PRICE TAGS:\n");
+		sb.append(getName() + " $ " + String.format("%.2f", getPrice()));
+		return sb.toString();
 	}
 	
 }
