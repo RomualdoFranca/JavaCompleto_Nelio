@@ -55,7 +55,8 @@ public class PessoaFisica extends Contribuintes{
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Nome: " + getNome());
+		sb.append("\nDados Pessoa Física");
+		sb.append("\nNome: " + getNome());
 		sb.append("\nRenda anual: $" + String.format("%.2f", getRendaAnual()));
 		sb.append("\nGastos com saúde: $" + String.format("%.2f", getGastosSaude()));
 		sb.append("\nValor do imposto: $" + String.format("%.2f", calculaImposto()));
