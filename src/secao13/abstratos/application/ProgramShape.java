@@ -30,7 +30,7 @@ public class ProgramShape {
 			char shapeType = sc.next().charAt(0);
 			sc.nextLine();
 			
-			System.out.print("Color:\nBLACK\nBLUE\nRED");
+			System.out.print("Color:\nBLACK\nBLUE\nRED ");
 			Color color = Color.valueOf(sc.next());
 //			Color color = Color.valueOf(sc.nextInt());
 			sc.nextLine();
@@ -56,7 +56,7 @@ public class ProgramShape {
 				shapeList.add(new Circle(radius, color));
 			}
 		}//fim do loop
-		
+		System.out.println("SHAPE DATA:");
 		for (Shape shape : shapeList) {
 			System.out.println(shape);
 		}

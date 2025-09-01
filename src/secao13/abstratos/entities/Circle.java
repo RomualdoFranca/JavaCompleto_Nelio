@@ -34,7 +34,6 @@ public class Circle extends Shape{
 	public String toString() {
 
 	StringBuilder sb = new StringBuilder();
-	sb.append("SHAPE DATA:\n");
 	sb.append("Circle área: " + String.format("%.2f", area()) + "\nColor: " + getColor());
 	return sb.toString();
 	}
