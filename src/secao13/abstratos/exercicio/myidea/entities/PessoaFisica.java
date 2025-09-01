@@ -27,22 +27,39 @@ public class PessoaFisica extends Contribuintes{
 		
 		if(getRendaAnual() < 20.000) {
 			
-			double taxaImpostoRenda = 0.0;
-			double valorImpostoSaude = getGastosSaude() * 0.5;
+			double taxaImpostoRenda = 0.15;
 			
 			if(getGastosSaude() > 0.0) {
-				taxaImpostoRenda = 0.15;
-				double valorImpostoRenda = getRendaAnual() * 0.15;
+				double valorImpostoSaude = getGastosSaude() * 0.5;
+				return (getRendaAnual() * taxaImpostoRenda) - valorImpostoSaude ; 
 				
-				return getRendaAnual() - (valorImpostoRenda - valorImpostoSaude);
 			}else {
-				return getRendaAnual() - valorImpostoRenda;
+				return getRendaAnual() * taxaImpostoRenda;
 			}
 			
 		}else {
+			double taxaImpostoRenda = 0.25;
 			
-		}
-		return 0;
+			if(getGastosSaude() > 0.0) {
+				double valorImpostoSaude = getGastosSaude() * 0.5;
+				return (getRendaAnual() * taxaImpostoRenda) - valorImpostoSaude ; 
+				
+			}else {
+				return getRendaAnual() * taxaImpostoRenda;
+			}
+			
+		}//fim do if-else externo
+		
+	}//fim do metodo 
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Nome: " + getNome());
+		sb.append("\nRenda anual: $" + String.format("%.2f", getRendaAnual()));
+		sb.append("\nGastos com saúde: $" + String.format("%.2f", getGastosSaude()));
+		sb.append("\nValor do imposto: $" + String.format("%.2f", calculaImposto()));
+		return sb.toString();
 	}
 
 }
