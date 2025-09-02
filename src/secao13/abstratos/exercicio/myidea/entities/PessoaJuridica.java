@@ -3,10 +3,6 @@ package secao13.abstratos.exercicio.myidea.entities;
 public class PessoaJuridica extends Contribuintes{
 	
 	private Integer numeroFuncionario;
-	
-	public PessoaJuridica() {
-		super();
-	}
 
 	public PessoaJuridica(String nome, Double rendaAnual, Integer numeroFuncionario) {
 		super(nome, rendaAnual);
@@ -34,15 +30,23 @@ public class PessoaJuridica extends Contribuintes{
 		
 	}//fim do metodo
 	
+	
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("\nDados Pessoa Jurídica");
-		sb.append("\nNome Fantasia: " + getNome());
-		sb.append("\nRenda anual: $" + String.format("%.2f", getRendaAnual()));
-		sb.append("\nNúmeros de funcinários: $" + getNumeroFuncionario());
-		sb.append("\nValor do imposto: $" + String.format("%.2f", calculaImposto()));
+		StringBuilder sb =  new StringBuilder();
+		sb.append(getNome() + " $ " +  String.format("%.2f", calculaImposto()));
 		return sb.toString();
 	}
+	
+//	@Override
+//	public String toString() {
+//		StringBuilder sb = new StringBuilder();
+//		sb.append("\nDados Pessoa Jurídica");
+//		sb.append("\nNome Fantasia: " + getNome());
+//		sb.append("\nRenda anual: $" + String.format("%.2f", getRendaAnual()));
+//		sb.append("\nNúmeros de funcinários: $" + getNumeroFuncionario());
+//		sb.append("\nValor do imposto: $" + String.format("%.2f", calculaImposto()));
+//		return sb.toString();
+//	}
 
 }//fim da classe

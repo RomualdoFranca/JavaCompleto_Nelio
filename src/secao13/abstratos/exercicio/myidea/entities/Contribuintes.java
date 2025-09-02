@@ -4,11 +4,6 @@ public abstract class Contribuintes {
 	private final String nome;
 	private Double rendaAnual;
 	
-	public Contribuintes() {
-		this.nome = "";
-		
-	}
-
 	public Contribuintes(String nome, Double rendaAnual) {
 		this.nome = nome;
 		this.rendaAnual = rendaAnual;
