@@ -1,0 +1,62 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.*;
+
+public class OperacoesDatas {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        List<LocalDate> datas = lerDatasDoUsuario(sc, dtf);
+
+        System.out.println("Primeira entrada de data:");
+        imprimeDatas(datas, dtf);
+
+        atualizarDatas(sc, dtf, datas);
+
+        System.out.println("Segunda entrada de data:");
+        imprimeDatas(datas, dtf);
+
+        sc.close();
+    }
+
+    public static void imprimeDatas(List<LocalDate> datas, DateTimeFormatter dtf) {
+        for (var localDate : datas) {
+            System.out.println(localDate.format(dtf));
+        }
+    }
+
+    public static List<LocalDate> lerDatasDoUsuario(Scanner sc, DateTimeFormatter dtf) {
+        List<LocalDate> datas = new ArrayList<>();
+        for (int i = 1; i <= 2; i++) {
+            System.out.print("Insira data " + i + ": ");
+            try {
+                datas.add(LocalDate.parse(sc.nextLine(), dtf));
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato inválido. Use dd/MM/yyyy.");
+                i--; // repete a leitura
+            }
+        }
+        return datas;
+    }
+
+    public static void atualizarDatas(Scanner sc, DateTimeFormatter dtf, List<LocalDate> datas) {
+        System.out.println("Nova entrada de datas:");
+        for (int i = 0; i < datas.size(); i++) {
+            System.out.print("Data " + (i + 1) + ": ");
+            try {
+                LocalDate novaData = LocalDate.parse(sc.nextLine(), dtf);
+                if (novaData.isAfter(datas.get(i))) {
+                    System.out.println("A alteração PODE ser realizada.");
+                    datas.set(i, novaData);
+                } else {
+                    System.out.println("A alteração NÃO pode ser realizada.");
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato inválido. Alteração ignorada.");
+            }
+        }
+    }
+}
