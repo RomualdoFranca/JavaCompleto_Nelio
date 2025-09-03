@@ -10,10 +10,10 @@ public class OperacoesDatas {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Insira a data de entrada:");
+		System.out.print("Insira a data de entrada (dd/mm/yyyy):");
 		String dataInputEntrada = sc.nextLine();
 
-		System.out.print("Insira a data de saída:");
+		System.out.print("Insira a data de saída (dd/mm/yyyy):");
 		String dataInputSaida = sc.nextLine();
 
 		// define o padrão de formatação de entrada
@@ -26,9 +26,19 @@ public class OperacoesDatas {
 		System.out.println("Data de entrada: " + entrada.format(dtf));
 		System.out.println("Data de saída: " + saida.format(dtf));
 
-//		if (entrada.isAfter(this.checkin) && checkout.isAfter(this.checkout)) {
-//
-//		}
+		System.out.print("Altera a data de entrada:");
+		String entradaAlterada = sc.nextLine();
+		
+		System.out.print("Altera a data de saída:");
+		String saidaAlterada = sc.nextLine();
+		
+		LocalDate alteraEntrada = LocalDate.parse(saidaAlterada, dtf);
+		LocalDate alteraSaida = LocalDate.parse(saidaAlterada, dtf);
+		
+		if (alteraEntrada.isAfter(entrada) && ) {
+			
+		}
+		
 		
 		//loop para inserir datas nas seguintes regras:
 		//data de saida maior que data de entrada
