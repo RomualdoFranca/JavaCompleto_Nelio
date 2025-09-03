@@ -1,0 +1,127 @@
+Aqui está uma lista dos métodos mais utilizados da classe LocalDate em Java, ideais para o estudo e a compreensão de suas principais funcionalidades.
+
+Métodos de Criação e Obtenção
+
+    now()
+
+        Descrição: Retorna a data atual do sistema. É um método estático e não aceita argumentos.
+
+        Exemplo: LocalDate hoje = LocalDate.now();
+
+    of(int year, int month, int dayOfMonth)
+
+        Descrição: Cria uma instância de LocalDate para uma data específica, fornecendo ano, mês e dia.
+
+        Exemplo: LocalDate dataAniversario = LocalDate.of(1995, 8, 25);
+
+    parse(CharSequence text)
+
+        Descrição: Analisa uma string de texto para criar um LocalDate. A string deve estar no formato ISO 8601, como "YYYY-MM-DD".
+
+        Exemplo: LocalDate data = LocalDate.parse("2025-01-15");
+
+Métodos de Manipulação (Adição e Subtração)
+
+Estes métodos retornam uma nova instância de LocalDate com a alteração, mantendo o objeto original imutável.
+
+    plusDays(long daysToAdd)
+
+        Descrição: Retorna uma cópia desta data com o número de dias especificado adicionado.
+
+        Exemplo: LocalDate amanha = hoje.plusDays(1);
+
+    minusDays(long daysToSubtract)
+
+        Descrição: Retorna uma cópia desta data com o número de dias especificado subtraído.
+
+        Exemplo: LocalDate ontem = hoje.minusDays(1);
+
+    plusMonths(long monthsToAdd)
+
+        Descrição: Adiciona um número de meses à data.
+
+        Exemplo: LocalDate dataFutura = hoje.plusMonths(3);
+
+    minusYears(long yearsToSubtract)
+
+        Descrição: Subtrai um número de anos da data.
+
+        Exemplo: LocalDate dataPassada = hoje.minusYears(5);
+
+    withDayOfMonth(int dayOfMonth)
+
+        Descrição: Retorna uma cópia desta data com o dia do mês alterado para o valor especificado.
+
+        Exemplo: LocalDate dataComDiaAlterado = hoje.withDayOfMonth(1);
+
+Métodos de Comparação e Verificação
+
+    isAfter(ChronoLocalDate other)
+
+        Descrição: Verifica se esta data é posterior à data fornecida.
+
+        Exemplo: boolean ehDepois = data1.isAfter(data2);
+
+    isBefore(ChronoLocalDate other)
+
+        Descrição: Verifica se esta data é anterior à data fornecida.
+
+        Exemplo: boolean ehAntes = data1.isBefore(data2);
+
+    isEqual(ChronoLocalDate other)
+
+        Descrição: Verifica se esta data é igual à data fornecida.
+
+        Exemplo: boolean ehIgual = data1.isEqual(data2);
+
+Métodos de Medição e Acesso a Valores
+
+    lengthOfMonth()
+
+        Descrição: Retorna o número de dias no mês desta data.
+
+        Exemplo: int diasNoMes = data.lengthOfMonth();
+
+    lengthOfYear()
+
+        Descrição: Retorna o número de dias no ano desta data.
+
+        Exemplo: int diasNoAno = data.lengthOfYear();
+
+    getDayOfWeek()
+
+        Descrição: Retorna o dia da semana como uma enumeração DayOfWeek.
+
+        Exemplo: DayOfWeek dia = data.getDayOfWeek();
+
+    getDayOfYear()
+
+        Descrição: Retorna o dia do ano (1-366).
+
+        Exemplo: int diaDoAno = data.getDayOfYear();
+
+    getMonthValue()
+
+        Descrição: Retorna o valor numérico do mês (1 a 12).
+
+        Exemplo: int mes = data.getMonthValue();
+
+    getYear()
+
+        Descrição: Retorna o valor do ano.
+
+        Exemplo: int ano = data.getYear();
+
+Outros Métodos Importantes
+
+    isLeapYear()
+
+        Descrição: Retorna true se o ano desta data for um ano bissexto.
+
+        Exemplo: boolean ehBissexto = data.isLeapYear();
+
+    atTime(LocalTime time)
+
+        Descrição: Combina esta data com uma hora para criar um LocalDateTime.
+
+        Exemplo: LocalDateTime dataHora = data.atTime(LocalTime.now());

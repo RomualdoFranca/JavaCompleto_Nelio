@@ -1,6 +1,7 @@
 package secao14.tratamento_excecoes.personalizadas.model.entities;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 /*
  * Fazer um programa para ler os dados de uma reserva de hotel (número do quarto, data
@@ -51,11 +52,15 @@ public class Reservation {
 		this.checkout = checkout;
 	}
 
-	public int duration() {
-		return 0;// getCheckout() - getCheckin();
+	public long duration() {
+		long duration = ChronoUnit.DAYS.between(checkin, checkout);
+		return duration;
 	}
 
 	public void updateDates(LocalDate checking, LocalDate checkout) {
+		if(checking.isAfter(this.checkin) && checkout.isAfter(this.checkout)) {
+			
+		}
 
 	}
 
