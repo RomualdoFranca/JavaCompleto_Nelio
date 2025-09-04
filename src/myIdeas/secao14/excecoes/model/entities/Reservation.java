@@ -1,6 +1,7 @@
-package secao14.tratamento_excecoes.personalizadas.model.entities;
+package myIdeas.secao14.excecoes.model.entities;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 
@@ -76,5 +77,16 @@ public class Reservation {
 		}
 
 	}
+	
+	@Override
+		public String toString() {
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			StringBuilder sb = new StringBuilder();
+			sb.append("Reserva: Quarto " + getRoomNumber() + ",");
+			sb.append(" check-in: " + getCheckin().format(dtf) + ",");
+			sb.append(" check-out: " + getCheckout().format(dtf) + ",");
+			sb.append(duration() + " nights");
+			return sb.toString();
+		}
 
 }
