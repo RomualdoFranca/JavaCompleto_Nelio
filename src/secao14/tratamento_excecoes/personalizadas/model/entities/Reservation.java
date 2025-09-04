@@ -1,8 +1,10 @@
 package secao14.tratamento_excecoes.personalizadas.model.entities;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+
+import secao14.tratamento_excecoes.personalizadas.model.exception.DomainException;
 
 /*
  * Fazer um programa para ler os dados de uma reserva de hotel (número do quarto, data
@@ -22,8 +24,11 @@ public class Reservation {
 
 	}
 
-	public Reservation(Integer roomNumber, LocalDate checkin, LocalDate checkout) {
-		super();
+	public Reservation(Integer roomNumber, LocalDate checkin, LocalDate checkout) throws DomainException{
+
+		if(!checkout.isAfter(checkin)) {
+			throw new DomainException("Check-out date must be after check-in date");
+		}
 		this.roomNumber = roomNumber;
 		this.checkin = checkin;
 		this.checkout = checkout;
@@ -41,40 +46,40 @@ public class Reservation {
 		return checkin;
 	}
 
-	public void setCheckin(LocalDate checkin) {
-		this.checkin = checkin;
-	}
 
 	public LocalDate getCheckout() {
 		return checkout;
 	}
 
-	public void setCheckout(LocalDate checkout) {
-		this.checkout = checkout;
-	}
 
 	public long duration() {
 		long duration = ChronoUnit.DAYS.between(checkin, checkout);
 		return duration;
 	}
 
-	public void updateDates(LocalDate checking, LocalDate checkout) {
-		boolean isAfter = checking.isAfter(getCheckin()) && checkout.isAfter(getCheckout());
-		boolean isBigger = getCheckout().isAfter(getCheckin());
-		try {
-			if(isAfter && isBigger) {
-				setCheckin(checking);
-				setCheckout(checkout);
-			}else {
-				System.out.println("Alterações de reserva só podem ocorrer para datas futuras ");
-				System.out.println("A data de checkout deve ser uma data após a data de checkin ");
-			}
-			
-		} catch (DateTimeParseException e) {
-			System.out.println("Formato inválido\nInsira no formato (dd/mm/yyyy) ");
+	public void updateDates(LocalDate checkin, LocalDate checkout) throws DomainException{
 		
+		LocalDate now = LocalDate.now();
+		if(checkin.isBefore(now) || checkout.isBefore(now)) {
+			throw new DomainException("Reservation dates for update must be future dates");
 		}
+		if(!checkout.isAfter(checkin)) {
+			throw new DomainException("Check-out date must be after check-in date");
+		}
+		this.checkin = checkin;
+		this.checkout = checkout;
 
+	}
+	
+	@Override
+	public String toString() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		StringBuilder sb = new StringBuilder();
+		sb.append("Reserva: Quarto " + getRoomNumber() + ",");
+		sb.append(" check-in: " + getCheckin().format(dtf) + ",");
+		sb.append(" check-out: " + getCheckout().format(dtf) + ",");
+		sb.append(duration() + " nights");
+		return sb.toString();
 	}
 
 }
