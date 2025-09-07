@@ -1,5 +1,7 @@
 package secao14.excecoes.exercicio.model.entities;
 
+import secao14.excecoes.exercicio.model.exception.DomainAccountException;
+
 public class Account {
 
 	private Integer number;
@@ -39,8 +41,14 @@ public class Account {
 		this.balance = amount + getBalance();
 	}
 	
-	public void withdraw(double amount) {
-		
+	public void withdraw(double amount) throws DomainAccountException {
+		if(amount > getWithdraw()) {
+			throw new DomainAccountException("The amount exceeds withdraw limit");
+		}
+		if(amount > getBalance()) {
+			throw new DomainAccountException("Not enough balance");
+		}
+		this.balance = getBalance() - amount;
 	}
 	
 	
