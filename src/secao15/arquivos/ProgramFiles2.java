@@ -37,7 +37,7 @@ public class ProgramFiles2 {
 		//no bloco finally tem algumas particularidades:
 		//ao tentar fechar as stream, elas podem gerar exceções, por isso é necessário abrir um bloco try-catch
 		finally {
-			
+			//fechamento manual
 			try {
 				if(fr != null) {
 					fr.close();
