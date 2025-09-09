@@ -79,10 +79,12 @@ public class ManipulacaoDiretorioArquivo {
 				char c = files[i].getName().charAt(i);
 				if(Character.isDigit(c)) {
 					sb.append(c);
-					valor = Integer.parseInt(sb.toString());
+					
 					return valor;
 				}
 			}
+			
+			int valor = Integer.parseInt(sb.toString());
 		}
 		return valor;
 	}
