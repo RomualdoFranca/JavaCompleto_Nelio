@@ -17,7 +17,7 @@ public class Program {
 		//variavel que indica se a criação da subpasta ocorreu com sucesso
 		System.out.print("Digite o nome da subpasta");
 		boolean success = new File(pathDiretorioRaiz + "\\Arquivos_csv").mkdir();//função que cria o diretorio
-		System.out.println("A subpasta foi criada: " + success);
+		System.out.println("\nA subpasta foi criada: " + success);
 		
 		//caminho do subdiretorio onde serao armazenados o arquivo .csv contendo todos os dados dos intens
 		String pathSubDiretorio = "C:\\Java Cursos\\Arquivos_csv";
@@ -29,7 +29,7 @@ public class Program {
 		
 		
 		
-		Item item1 = new Item("TV LED", 1290.00, 1);
+		Product item1 = new Product("TV LED", 1290.00, 1);
 		System.out.println(item1);
 	}
 

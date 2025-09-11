@@ -84,7 +84,7 @@ public class ManipulacaoDiretorioArquivo {
 				}
 			}
 			
-			int valor = Integer.parseInt(sb.toString());
+			valor = Integer.parseInt(sb.toString());
 		}
 		return valor;
 	}

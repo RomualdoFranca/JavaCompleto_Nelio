@@ -1,15 +1,15 @@
 package secao15.arquivos.model.entities;
 
-public class Item {
+public class Product {
 	private String name;
 	private Double precoUnitario;
 	private Integer quantidade;
 
-	public Item() {
+	public Product() {
 
 	}
 
-	public Item(String name, Double precoUnitario, Integer quantidade) {
+	public Product(String name, Double precoUnitario, Integer quantidade) {
 		this.name = name;
 		this.precoUnitario = precoUnitario;
 		this.quantidade = quantidade;
