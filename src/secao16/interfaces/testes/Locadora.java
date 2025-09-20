@@ -62,30 +62,30 @@ public class Locadora {
 		this.precoDia = precoDia;
 	}
 	
-	public long duracao() {
-		Duration duracao = Duration.between(retirada, devolucao);
-		
-		long duracaoDias = duracao.toDays();
-		long duracaoHoras = duracao.toHours();
-		long duracaoMinutos = duracao.toMinutes();
-		
-		if(duracaoHoras >= 12 || duracaoHoras <= 23) {
-			
-			if(duracaoMinutos != 0) {
-				duracaoDias += 1;
-				return duracaoDias;
-				
-			}else {
-				
-				return duracaoHoras;
-			}
-			
-		}else if(duracaoDias != 0 ) {
-			if(duracaoHoras !=)
-		}
-		
-		
-		return inicio;
-	}
+//	public long duracao() {
+//		Duration duracao = Duration.between(retirada, devolucao);
+//		
+//		long duracaoDias = duracao.toDays();
+//		long duracaoHoras = duracao.toHours();
+//		long duracaoMinutos = duracao.toMinutes();
+//		
+//		if(duracaoHoras >= 12 || duracaoHoras <= 23) {
+//			
+//			if(duracaoMinutos != 0) {
+//				duracaoDias += 1;
+//				return duracaoDias;
+//				
+//			}else {
+//				
+//				return duracaoHoras;
+//			}
+//			
+//		}else if(duracaoDias != 0 ) {
+//			if(duracaoHoras !=)
+//		}
+//		
+//		
+//		return inicio;
+//	}
 
 }
