@@ -16,11 +16,11 @@ public class CarRental {
 
 	}
 
-	public CarRental(LocalDateTime start, LocalDateTime finish, Vehicle vehicle, Invoice invoice) {
+	//o construtor não inicia com a fatura (Invoice) pois ela so vai existir após o aluguel do veículo
+	public CarRental(LocalDateTime start, LocalDateTime finish, Vehicle vehicle) {
 		this.start = start;
 		this.finish = finish;
 		this.vehicle = vehicle;
-		this.invoice = invoice;
 	}
 
 	public LocalDateTime getStart() {
