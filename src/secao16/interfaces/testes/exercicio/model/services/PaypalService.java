@@ -5,9 +5,8 @@ public class PaypalService implements OnlinePaymentService {
 	@Override
 	//vai calcular a taxa de 2% sobre o amount acrescido da taxa de 1% que foi calculada no método interest()
 	public Double paymentFee(double amount) {// taxa de pagamento.
-		
-//		for(int i = 1; i <= )
-		return null;
+		double fee = amount * 0.02;
+		return fee;
 	}
 
 	@Override

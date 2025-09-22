@@ -2,10 +2,14 @@ package secao16.interfaces.testes.exercicio.application;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
 import secao16.interfaces.testes.exercicio.model.entities.Contratc;
+import secao16.interfaces.testes.exercicio.model.entities.Installment;
+import secao16.interfaces.testes.exercicio.model.services.ContratctService;
 
 public class Program {
 
@@ -25,11 +29,14 @@ public class Program {
 		System.out.print("Valor do contrato: ");
 		double valorContrato = Double.parseDouble(sc.nextLine());
 		
+		Contratc obj = new Contratc(numero, data, valorContrato);
+		System.out.println(obj);
+		
 		System.out.print("Entre com o número de parcelas: ");
 		int parcelas = Integer.parseInt(sc.nextLine());
 		
-		Contratc obj = new Contratc(numero, data, valorContrato);
-		System.out.println(obj);
+		ContratctService service = new ContratctService();
+		service.processContratc(obj, parcelas);
 		
 		sc.close();
 	}

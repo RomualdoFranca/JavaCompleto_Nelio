@@ -11,6 +11,9 @@ public class Installment {//parcelas
 		
 	}
 
+	public Installment(LocalDate dueDate) {
+		this.dueDate = dueDate;
+	}
 	public Installment(LocalDate dueDate, Double amount) {
 		this.dueDate = dueDate;
 		this.amount = amount;
